@@ -1,14 +1,15 @@
-# SIMULATION AND IMPLEMENTATION OF FINITE STATE MACHINE
+**SIMULATION AND IMPLEMENTATION OF FINITE STATE MACHINE**
 
-## AIM: 
-To simulate and synthesis finite state machine using Xilinx ISE.
+**AIM:**
 
-## APPARATUS REQUIRED:
+To simulate and synthesis finite state machine using Vivado 2023.3
 
-Xilinx 14.7 
-Spartan6 FPGA
+**APPARATUS REQUIRED:**
 
-## PROCEDURE: 
+Vivado 2023.3
+
+**PROCEDURE:**
+
 STEP:1 Start the Xilinx navigator, Select and Name the New project.
 STEP:2 Select the device family, device, package and speed. 
 STEP:3 Select new source in the New Project and select Verilog Module as the Source type. 
@@ -22,102 +23,67 @@ STEP:10 Double click on the Implement Design and double click on the Generate Pr
 STEP:11 On the board, by giving required input, the LEDs starts to glow light, indicating the output.
 STEP:12 Load the Bit file into the SPARTAN 6 FPGA 
 
-## Finite State Machine:
+**FINITE STATE MACHINE:**
 
-### Logic Diagram :
+**LOGIC DIAGRAM:**
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-5/assets/6987778/34ec5d63-2b3b-4511-81ef-99f4572d5869)
 
-### Verilog Code :
+**VERILOG CODE:**
+
 ```
 module fsm( clk, rst, inp, outp);
-
 input clk, rst, inp;
-
 output outp;
-
 reg [1:0] state;
-
 reg outp;
-
 always @(posedge clk, posedge rst)
-
 begin
-
 if(rst)
-
 state<=2'b00;
-
 else
-
 begin
-
 case(state)
-
 2'b00:
-
 begin
-
 if(inp) state <=2'b01;
-
-
-
 else state <=2'b10;
 end
-
 2'b01:
-
 begin
-
 if (inp) state <=2'b11;
 else state<=2'b10;
 end
-
 2'b10:
 begin
 if (inp) state<=2'b01;
 else state <=2'b11;
 end
-
 2'b11:
-
 begin
-
 if (inp) state <=2'b01;
 else state <=2'b10;
-
 end
-
 endcase
-
 end
-
 end
-
 always @(posedge clk, posedge rst)
-
 begin
-
 if(rst)
-
 outp <= 0;
-
 else if(state == 2'b11)
-
 outp <= 1;
-
 else outp<= 0;
-
 end
-
 endmodule
 ```
-### Output:
+
+**OUTPUT:**
 
 ![fsm1](https://github.com/Dhinesh0024/VLSI-LAB-EXP-5/assets/160568927/5a093168-10f6-4f6c-b4f7-cdfa69e883d4)
 
 
-## Result:
+**RESULT:**
 
-Hence the finite state machine has been simulated and synthesised using xilinx ISE.
+Hence the finite state machine has been simulated and synthesised using Vivado 2023.2
 
